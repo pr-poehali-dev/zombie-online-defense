@@ -251,10 +251,10 @@ export default function Index() {
         <div className="grid lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2">
             <Card className="bg-[#3a2e28]/90 border-[#CD7F32]/30 p-6 backdrop-blur">
-              <div className="relative aspect-square bg-[#2C3539] rounded-lg overflow-hidden border-2 border-[#CD7F32]/40">
+              <div className="relative aspect-square bg-[#2C3539] rounded-lg overflow-hidden border-2 border-[#CD7F32]/40" style={{ perspective: '1000px' }}>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-24 h-32 bg-gradient-to-b from-[#CD7F32] to-[#8B4513] rounded-lg shadow-2xl border-4 border-[#D2B48C]/50 flex items-center justify-center">
+                  <div className="relative" style={{ transform: 'rotateX(45deg)' }}>
+                    <div className="w-24 h-32 bg-gradient-to-b from-[#CD7F32] to-[#8B4513] rounded-lg shadow-2xl border-4 border-[#D2B48C]/50 flex items-center justify-center" style={{ transform: 'rotateX(-45deg)' }}>
                       <Icon name="Truck" size={48} className="text-[#2C3539]" />
                     </div>
                     <div className="absolute -inset-12">
@@ -279,9 +279,9 @@ export default function Index() {
                     onClick={() => shootZombie(zombie.id)}
                     className="absolute cursor-crosshair hover:scale-125 transition-transform"
                     style={{
-                      left: `calc(50% + ${zombie.x}px)`,
-                      top: `calc(50% + ${zombie.y}px)`,
-                      transform: 'translate(-50%, -50%)',
+                      left: `calc(50% + ${zombie.x * 0.15}px)`,
+                      top: `calc(50% + ${zombie.y * 0.15}px)`,
+                      transform: `translate(-50%, -50%) scale(${0.6 + (500 - zombie.distance) / 1000})`,
                     }}
                   >
                     <div className="relative">
